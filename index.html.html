@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para Livia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* ===== VIDEO DE FUNDO ===== */
+    .bg-video {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.12; /* MAIS VISÍVEL, AINDA SUTIL */
+      filter: blur(18px) brightness(1.15) saturate(90%);
+      z-index: -3;
+      pointer-events: none;
+    }
+
+    /* ===== CONTEÚDO ===== */
+    .container {
+      min-height: 100vh;
+      padding: 120px 24px 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 32px;
+    }
+
+    h1 {
+      font-weight: 300;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      letter-spacing: -0.03em;
+      opacity: 0;
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    p {
+      max-width: 520px;
+      font-weight: 300;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeUp 1.5s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== FOTO DELA ===== */
+    .photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0;
+      filter: blur(6px);
+      animation: photoReveal 4s ease forwards;
+      animation-delay: 2s;
+    }
+
+    @keyframes photoReveal {
+      to {
+        opacity: 0.35;
+        filter: blur(0);
+      }
+    }
+
+    /* ===== BOTÃO FINAL ===== */
+    .final {
+      position: absolute;
+      bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 14px 36px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      font-weight: 300;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: rgba(255,255,255,0.16);
+    }
+
+    .message {
+      max-width: 420px;
+      font-size: 0.95rem;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    .message.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- VIDEO -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="WhatsApp Video 2025-12-24 at 03.26.57.mp4" type="video/mp4">
+  </video>
+
+  <!-- CONTEÚDO -->
+  <main class="container">
+    <h1>Livia</h1>
+
+    <p>
+      Amor, eu queria te dizer algo simples, eu te amo. Gosto da forma que você é, seu jeitinho, seu sorriso, seu cabelo hidratado que vc não deixa eu fazer a hidratação especial. 
+Gosto da forma que você me traz leveza, do jeito que você me faz bem so de estar ao meu lado. Espero que Deus trilhe nosso caminho debaixo da vontade dEle. Eu te amo demais minha gatinha. 🩵🩵
+    </p>
+
+    <!-- FOTO -->
+    <img src="c:\Users\gusta\Downloads\WhatsApp Image 2025-12-24 at 03.34.16.jpeg" alt="Livia" class="photo" />
+  </main>
+
+  <!-- FINAL -->
+  <div class="final">
+    <button onclick="revealMessage()">
+      quando precisar clique aqui
+    </button>
+
+    <div class="message" id="msg">
+      Essa parte é só sua, eu sempre vou estar aqui quando voce precisar minha princesaa. eu te amo muito!!🩵
+    </div>
+  </div>
+
+  <script>
+    function revealMessage() {
+      document.getElementById("msg").classList.add("show");
+    }
+  </script>
+
+</body>
+<!-- AUDIO DE FUNDO -->
+<audio id="bgMusic" loop>
+  <source src="C:\Users\gusta\Downloads\musica.mp3.mp3" type="audio/mpeg">
+</audio>
+<button onclick="revealMessage(); playMusic();">
+  Clique para dar play heheheh :)
+</button>
+<script>
+  function revealMessage() {
+    document.getElementById("msg").classList.add("show");
+  }
+
+  function playMusic() {
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.2; // volume baixo e elegante
+    music.play();
+  }
+</script>
+
+</html>
